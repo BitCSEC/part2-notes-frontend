@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import  Footer  from './components/Footer'
 import Note from './components/Note'
 import noteService from './services/notes'
 import Notification from './components/Notification'
@@ -64,7 +65,7 @@ const App = () => {
     return (
         <div>
             <h1>Notes</h1>
-        <Notification message={errorMessage} />
+            <Notification message={errorMessage} />
             <div>
                 <button onClick={() => setShowAll(!showAll)}>
                     show {showAll ? 'important' : 'all'}
@@ -85,6 +86,7 @@ const App = () => {
                     onChange={handleNoteChange} />
                 <button type="submit">save</button>
             </form>
+        <Footer />
         </div>
     )
 }
