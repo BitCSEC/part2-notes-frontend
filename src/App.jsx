@@ -73,7 +73,12 @@ const App = () => {
                 setErrorMessage(null)
             }, 5000)
         }
-    } 
+    }
+
+    const logout = () => {
+        window.localStorage.removeItem('loggedNoteappUser')
+        setUser(null)
+    }
 
     const loginForm = () => {
         return (
@@ -100,6 +105,7 @@ const App = () => {
             {user && (
                 <div>
                     <p>{user.name} logged in</p>
+                    <button onClick={logout}>logout</button>
                     {noteForm()}
                 </div>
             )}
