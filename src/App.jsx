@@ -33,10 +33,10 @@ const App = () => {
 
     const addNote = (noteObject) => {
         noteService
-        .create(noteObject)
-        .then(returnedNote => {
-            setNotes(notes.concat(returnedNote))
-        })
+            .create(noteObject)
+            .then(returnedNote => {
+                setNotes(notes.concat(returnedNote))
+            })
     }
 
     const toggleImportanceOf = id => {
@@ -61,34 +61,24 @@ const App = () => {
 
     const notesToShow = showAll ? notes : notes.filter(note => note.important)
 
-    const handleLogin = async event => {
-        event.preventDefault()
-
+    const login = async (username, password) => {
         try {
             const user = await loginService.login({ username, password })
             window.localStorage.setItem('loggedNoteappUser', JSON.stringify(user))
             noteService.setToken(user.token)
             setUser(user)
-            setUsername('')
-            setPassword('')
         } catch (error) {
             setErrorMessage(error.response.data.error)
             setTimeout(() => {
                 setErrorMessage(null)
             }, 5000)
         }
-    }
+    } 
 
     const loginForm = () => {
         return (
             <Togglable buttonLabel="login">
-                <LoginForm
-                    username={username}
-                    password={password}
-                    handleUsernameChange={({ target }) => setUsername(target.value)}
-                    handlePasswordChange={({ target }) => setPassword(target.value)}
-                    handleSubmit={handleLogin}
-                />
+                <LoginForm loginUser={login} />
             </Togglable>
         )
     }
