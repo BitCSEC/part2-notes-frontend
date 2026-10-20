@@ -1,40 +1,40 @@
-import { useState} from "react"
+import { useState } from 'react'
 
 const LoginForm = ({ loginUser }) => {
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
 
-    const login = async (event) => {
-        event.preventDefault()
-        await loginUser(username, password)
-        setUsername('')
-        setPassword('')
-    }
+  const login = async (event) => {
+    event.preventDefault()
+    await loginUser(username, password)
+    setUsername('')
+    setPassword('')
+  }
 
-    return (
+  return (
+    <div>
+      <h2>Login</h2>
+      <form onSubmit={login}>
         <div>
-            <h2>Login</h2>
-            <form onSubmit={login}>
-                <div>
                     username
-                    <input
-                        value={username}
-                        onChange={({ target }) => setUsername(target.value)}
-                    />
-                </div>
-                <div>
-                    password
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={({ target }) => setPassword(target.value)}
-                    />
-                </div>
-                <button type="submit">login</button>
-            </form>
+          <input
+            value={username}
+            onChange={({ target }) => setUsername(target.value)}
+          />
         </div>
+        <div>
+                    password
+          <input
+            type="password"
+            value={password}
+            onChange={({ target }) => setPassword(target.value)}
+          />
+        </div>
+        <button type="submit">login</button>
+      </form>
+    </div>
 
-    )
+  )
 }
 
 export default LoginForm
