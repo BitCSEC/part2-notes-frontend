@@ -1,21 +1,21 @@
 import { useState } from 'react'
 
 const LoginForm = ({ loginUser }) => {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
 
-  const login = async (event) => {
-    event.preventDefault()
-    await loginUser(username, password)
-    setUsername('')
-    setPassword('')
-  }
+    const login = async (event) => {
+        event.preventDefault()
+        await loginUser(username, password)
+        setUsername('')
+        setPassword('')
+    }
 
-  return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={login}>
+    return (
         <div>
+            <h2>Login</h2>
+            <form onSubmit={login}>
+                <div>
                     <label>
                         username
                         <input
@@ -38,7 +38,7 @@ const LoginForm = ({ loginUser }) => {
             </form>
         </div>
 
-  )
+    )
 }
 
 export default LoginForm
